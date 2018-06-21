@@ -6,4 +6,5 @@ COPY ./src/index.html .
 # Stage2: BUILD ARTIFACT IMAGE
 FROM nginx:latest  
 COPY --from=builder /app/index.html /usr/share/nginx/html/
-ENTRYPOINT [ "nginx" ]
+EXPOSE 80
+CMD ["nginx"]
