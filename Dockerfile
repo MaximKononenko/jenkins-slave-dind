@@ -5,5 +5,5 @@ WORKDIR /app
 COPY ./src/index.html .
 # Stage2: BUILD ARTIFACT IMAGE
 FROM nginx:latest  
-COPY --from=builder index.html /usr/share/nginx/html/
+COPY --from=builder /app/index.html /usr/share/nginx/html/
 CMD []
