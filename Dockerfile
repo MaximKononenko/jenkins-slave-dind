@@ -5,6 +5,7 @@ WORKDIR /app
 COPY ./src/index.html .
 # Stage2: BUILD ARTIFACT IMAGE
 FROM nginx:latest  
-COPY --from=builder /app/index.html /usr/share/nginx/html/
-EXPOSE 80
-CMD ["nginx"]
+RUN rm /usr/share/nginx/html/index.html
+ADD --from=builder /app/index.html /usr/share/nginx/html/index.html
+EXPOSE 80/tcp
+CMD ["nginx","-g","daemon off;"]
