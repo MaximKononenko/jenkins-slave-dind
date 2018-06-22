@@ -1,12 +1,13 @@
 pipeline {
     agent none
     stages {
-        stage('Non-Sequential Stage') {
+        stage('Build Stage') {
             agent {
-                label 'for-non-sequential'
+                label 'swarm-agent'
             }
             steps {
-                echo "On Non-Sequential Stage"
+                echo "Run docker build Stage"
+                docker build .
             }
         }
         stage('Sequential') {
